@@ -1,10 +1,5 @@
 package com.hq.queue;
 
-import com.sun.org.apache.regexp.internal.RE;
-
-import java.time.Year;
-import java.util.concurrent.LinkedBlockingQueue;
-
 /**
  * LoopQueue
  *

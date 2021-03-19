@@ -93,7 +93,7 @@ public class OneLinkedList<T> {
     }
 
     /**
-     * 插入
+     * 插入,默认插入尾部
      *
      * @param data
      */

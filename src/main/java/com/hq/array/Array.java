@@ -9,7 +9,7 @@ import java.util.Arrays;
  * @date 2021/2/19
  * @description 数组
  */
-public class ArrayTest {
+public class Array {
 
     /**
      * 数组大小
@@ -26,7 +26,7 @@ public class ArrayTest {
      */
     private int index;
 
-    public ArrayTest(int size) {
+    public Array(int size) {
         this.size = size;
         this.array = new int[size];
     }

@@ -5,36 +5,42 @@ package com.hq.queue;
  *
  * @author 胡强
  * @date 2021/3/11
- * @description 单向队列, 先进先出 FIFO
+ * @description 单向队列, 数组实现,数组有边界
  */
 public class OneArrayQueue<T> {
+
     private Object[] array;
 
     private int head = 0; //队列的头部
 
     private int tail = 0; //队列的尾部
 
-    private int n = 0; //队列大小
+    private int size = 0; //队列大小
 
-    private int size = 0; //队列的容量
+    private int n = 0; //队列的容量
 
-    public OneArrayQueue(int size) {
-        this.size = size;
-        array = new Object[size];
+    public OneArrayQueue(int n) {
+        this.n = n;
+        array = new Object[n];
     }
 
     /**
      * 入队列
      *
-     * @param data
+     * @param data 插入的数据
      * @return
      */
     public boolean put(T data) {
-        if (n >= size) {
+        if (size >= n) {
             return false;
         }
-        if (tail >= size) {
-            //移位
+        //判断是否需要移动数组
+        if (tail >= n) {
+            //当前队列已满
+            if (tail - head >= n) {
+                return false;
+            }
+            //移动数组位置
             for (int i = 0; i < head; i++) {
                 if (head + i < tail) {
                     array[i] = array[head + i];
@@ -42,9 +48,10 @@ public class OneArrayQueue<T> {
             }
             tail = tail - head;
             head = 0;
+
         }
         array[tail++] = data;
-        n++;
+        size++;
         return true;
     }
 
@@ -54,11 +61,11 @@ public class OneArrayQueue<T> {
      * @return
      */
     public T pop() {
-        if (n > 0) {
+        if (size > 0) {
             T data = (T) array[head];
             array[head] = null;
             head++;
-            n--;
+            size--;
             return data;
         }
         return null;
@@ -70,6 +77,6 @@ public class OneArrayQueue<T> {
      * @return
      */
     public int getSize() {
-        return n;
+        return size;
     }
 }

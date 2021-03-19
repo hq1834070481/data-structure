@@ -8,7 +8,7 @@ import java.util.HashMap;
  *
  * @author 胡强
  * @date 2021/3/8
- * @description LRU淘汰算发, 最近最少使用
+ * @description LRU淘汰算法, 最近最少使用
  */
 public class LruCache<K, V> {
 

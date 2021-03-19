@@ -5,7 +5,7 @@ package com.hq.queue;
  *
  * @author 胡强
  * @date 2021/3/15
- * @description 队列, 先进先出
+ * @description 队列,链表实现
  */
 public class OneLinkQueue<T> {
 

@@ -8,7 +8,7 @@ import java.util.Map;
  *
  * @author 胡强
  * @date 2021/2/25
- * @description TODO
+ * @description 双向链表
  */
 public class DoubleLinkedList<T> {
 
@@ -59,6 +59,12 @@ public class DoubleLinkedList<T> {
         }
     }
 
+    /**
+     * 插入指定位置
+     *
+     * @param position 插入的链表位置
+     * @param data     插入的数据
+     */
     public void insert(int position, T data) {
         if (position > size) {
             //不能超过链表长度
@@ -82,6 +88,11 @@ public class DoubleLinkedList<T> {
         size++;
     }
 
+    /**
+     * 插入头部
+     *
+     * @param data 插入的数据
+     */
     public void insertHead(T data) {
         Node node = new Node(data);
         if (head == null) {
@@ -95,6 +106,11 @@ public class DoubleLinkedList<T> {
         size++;
     }
 
+    /**
+     * 插入链表尾部
+     *
+     * @param data 插入的数据
+     */
     public void insertTail(T data) {
         Node node = new Node(data);
         if (tail == null) {
@@ -107,7 +123,12 @@ public class DoubleLinkedList<T> {
         size++;
     }
 
-    public void delete(T data) {
+    /**
+     * 删除数据
+     *
+     * @param data 删除的数据
+     */
+    public boolean delete(T data) {
         Node node = head;
         for (; node != null; node = node.next) {
             if (node.data == data) {
@@ -119,7 +140,6 @@ public class DoubleLinkedList<T> {
                     prev.next = next;
                     node.prev = null;
                 }
-
                 if (next == null) {
                     tail = node;
                 } else {
@@ -127,8 +147,9 @@ public class DoubleLinkedList<T> {
                     node.next = null;
                 }
                 size--;
-                return;
+                return true;
             }
         }
+        return false;
     }
 }

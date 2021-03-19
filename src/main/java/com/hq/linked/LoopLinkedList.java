@@ -5,7 +5,7 @@ package com.hq.linked;
  *
  * @author 胡强
  * @date 2021/3/2
- * @description TODO
+ * @description 循环链表
  */
 public class LoopLinkedList {
 
@@ -39,14 +39,27 @@ public class LoopLinkedList {
 
     private int size;
 
+    /**
+     * 约瑟夫环
+     *
+     * @param data 开始的位置
+     * @param num  每次移动次数
+     * @return
+     */
     public int josephusProblem(int data, int num) {
         Node node = head;
+        //当前链表没有数据
+        if (node == null) {
+            return 0;
+        }
+        //找到开始的节点
         for (int i = 1; i < size; i++) {
             if (node.data == data) {
                 break;
             }
             node = node.next;
         }
+        //当前队列数量只有一个时，表示结束
         while (1 < size) {
             Node prev = node;
             for (int i = 0; i < num; i++) {
